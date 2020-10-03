@@ -17,7 +17,7 @@ const AllItemsTab = () => {
       <Stack.Screen
         name="detailItem"
         component={DetailItem}
-        options={{ title: "Item Name" }}
+        options={{ title: "Item" }}
       />
     </Stack.Navigator>
   );
