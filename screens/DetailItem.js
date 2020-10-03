@@ -3,12 +3,12 @@ import { View, StyleSheet, Text } from "react-native";
 
 import Detail from "../components/Detail";
 
-const DetailItem = ({ route, navigation }) => {
-  const { id, text } = route.params.item;
+const DetailItem = ({ route }) => {
+  const { item } = route.params;
 
   return (
     <View style={styles.screen}>
-      <Detail id={id} text={text} />
+      <Detail item={item} />
     </View>
   );
 };

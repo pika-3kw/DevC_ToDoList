@@ -6,7 +6,7 @@ const Item = (props) => {
 
   return (
     <TouchableNativeFeedback {...props}>
-      <View style={styles.item}>
+      <View style={[styles.item, completed ? styles.completed : styles.active]}>
         <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableNativeFeedback>
@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   },
   completed: {
     backgroundColor: "#00b894",
+  },
+  active: {
+    backgroundColor: "#ff7675",
   },
 });
 

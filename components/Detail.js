@@ -1,10 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-const Detail = ({ id, text }) => {
+const Detail = ({ item }) => {
+  const { text, completed } = item;
+
   return (
-    <View style={styles.detail}>
-      <Text style={styles.id}>{id}</Text>
+    <View style={[styles.detail, completed ? styles.completed : styles.active]}>
       <Text style={styles.text}>{text}</Text>
     </View>
   );
@@ -12,11 +13,22 @@ const Detail = ({ id, text }) => {
 
 const styles = StyleSheet.create({
   detail: {
-    flex: 1,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
+    width: "90%",
+    backgroundColor: "white",
+    height: "60%",
+    padding: 20,
+  },
+  text: {
+    fontSize: 19,
+  },
+  completed: {
+    backgroundColor: "#00b894",
+  },
+  active: {
+    backgroundColor: "#ff7675",
   },
 });
 
