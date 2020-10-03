@@ -1,21 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import ActiveItemsTab from "./navigation/ActiveItemsTab";
+import AllItemsTab from "./navigation/AllItemsTab";
+import CompleteItemsTab from "./navigation/CompleteItemsTab";
+
+const Tab = createBottomTabNavigator();
+
+const routeIcons = (name, focused) => {
+  const color = focused ? "blue" : "grey";
+  if (name === "completeItems") {
+    return <AntDesign name="checkcircleo" size={24} color={color} />;
+  }
+  if (name === "allItems") {
+    return <MaterialIcons name="add-circle-outline" size={32} color={color} />;
+  }
+  if (name === "activeItems") {
+    return <AntDesign name="questioncircleo" size={24} color={color} />;
+  }
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused }) => routeIcons(route.name, focused),
+        })}
+        tabBarOptions={{
+          activeTintColor: "blue",
+          inactiveTintColor: "grey",
+        }}
+      >
+        <Tab.Screen
+          name="completeItems"
+          component={CompleteItemsTab}
+          options={{ title: "Complete Items" }}
+        />
+        <Tab.Screen
+          name="allItems"
+          component={AllItemsTab}
+          options={{ title: "All Items" }}
+        />
+        <Tab.Screen
+          name="activeItems"
+          component={ActiveItemsTab}
+          options={{ title: "Active Items" }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
