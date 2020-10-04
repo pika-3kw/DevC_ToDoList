@@ -50,7 +50,7 @@ const AllItemsScreen = ({ navigation }) => {
 
   const addItem = (text) => {
     const item = {
-      id: Math.random(),
+      id: Math.random().toString(),
       text: text,
       completed: false,
     };
