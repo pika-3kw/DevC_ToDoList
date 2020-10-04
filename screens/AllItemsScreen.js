@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Text, Button, FlatList, Alert } from "react-native";
 
 import Item from "../components/Item";
-
+import FormAddItem from "../components/FormAddItem";
 import data from "../data/items";
 
 const AllItemsScreen = ({ navigation }) => {
@@ -50,6 +50,7 @@ const AllItemsScreen = ({ navigation }) => {
 
   return (
     <View style={styles.screen}>
+      <FormAddItem style={styles.formAddItem} />
       <FlatList
         style={styles.listItem}
         data={items}
@@ -67,9 +68,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   listItem: {
-    flex: 1,
+    flex: 10,
     backgroundColor: "#ecf0f1",
     width: "100%",
+  },
+  formAddItem: {
+    flex: 0.1,
   },
 });
 
