@@ -29,6 +29,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="allItems"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => routeIcons(route.name, focused),
         })}
