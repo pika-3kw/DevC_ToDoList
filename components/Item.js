@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   completed: {
-    backgroundColor: "#00b894",
+    backgroundColor: "#bdc3c7",
   },
   active: {
-    backgroundColor: "#ff7675",
+    backgroundColor: "#2ecc71",
   },
 });
 
