@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Button, FlatList } from "react-native";
+import { View, StyleSheet, Text, Button, FlatList, Alert } from "react-native";
 
 import Item from "../components/Item";
 
@@ -7,11 +7,22 @@ import data from "../data/items";
 
 const AllItemsScreen = ({ navigation }) => {
   const [items, setItems] = useState(data);
-  const [selectedId, setSelectedId] = useState(null);
 
-  const removeHandler = (id) => {
+  const removeHandler = (itemTarget) => {
+    const { id, text } = itemTarget;
     const filterd = items.filter((item) => item.id !== id);
-    setItems(filterd);
+
+    Alert.alert("Delete your todo?", text, [
+      {
+        text: "No",
+      },
+      {
+        text: "Yes",
+        onPress: () => {
+          setItems(filterd);
+        },
+      },
+    ]);
   };
 
   const revertItem = (id) => {
@@ -33,7 +44,7 @@ const AllItemsScreen = ({ navigation }) => {
     <Item
       item={item}
       onPress={() => pressHandler(item)}
-      onLongPress={() => removeHandler(item.id)}
+      onLongPress={() => removeHandler(item)}
     />
   );
 
@@ -42,7 +53,6 @@ const AllItemsScreen = ({ navigation }) => {
       <FlatList
         style={styles.listItem}
         data={items}
-        extraData={selectedId}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
