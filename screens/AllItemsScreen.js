@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, Button, FlatList } from "react-native";
 
 import Item from "../components/Item";
 
-import items from "../data/items";
+import data from "../data/items";
 
 const AllItemsScreen = ({ navigation }) => {
+  const [items, setItems] = useState(data);
+
+  const removeHandler = (id) => {
+    const filterd = items.filter((item) => item.id !== id);
+    setItems(filterd);
+  };
+
   const renderItem = ({ item }) => (
     <Item
       item={item}
       onPress={() => navigation.navigate("detailItem", { item })}
+      onLongPress={() => removeHandler(item.id)}
     />
   );
 

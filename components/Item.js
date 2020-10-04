@@ -1,15 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableNativeFeedback } from "react-native";
+import { View, StyleSheet, Text, TouchableWithoutFeedback } from "react-native";
 
 const Item = (props) => {
   const { text, completed } = props.item;
 
   return (
-    <TouchableNativeFeedback {...props}>
+    <TouchableWithoutFeedback {...props}>
       <View style={[styles.item, completed ? styles.completed : styles.active]}>
         <Text style={styles.text}>{text}</Text>
       </View>
-    </TouchableNativeFeedback>
+    </TouchableWithoutFeedback>
   );
 };
 
