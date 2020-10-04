@@ -48,14 +48,25 @@ const AllItemsScreen = ({ navigation }) => {
     />
   );
 
+  const addItem = (text) => {
+    const item = {
+      id: Math.random(),
+      text: text,
+      completed: false,
+    };
+
+    setItems([...items, item]);
+  };
+
   return (
     <View style={styles.screen}>
-      <FormAddItem style={styles.formAddItem} />
+      <FormAddItem style={styles.formAddItem} addItem={addItem} />
       <FlatList
         style={styles.listItem}
         data={items}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        inverted={true}
       />
     </View>
   );

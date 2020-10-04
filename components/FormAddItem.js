@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
 
 const FormAddItem = (props) => {
+  const [input, setInput] = useState("");
+
   return (
     <View style={{ ...styles.formAddItem, ...props.style }}>
-      <TextInput style={styles.input} />
+      <TextInput
+        style={styles.input}
+        onChangeText={(text) => setInput(text)}
+        value={input}
+      />
       <View style={styles.button}>
-        <Button title="Add" />
+        <Button title="Add" onPress={() => props.addItem(input)} />
       </View>
     </View>
   );
